@@ -1,4 +1,4 @@
 import Bottles from './Bottles'
-const b = new Bottles
+const bottles = new Bottles
 
-console.log(b.song())
+console.log(bottles.song())
