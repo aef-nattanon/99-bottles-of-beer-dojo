@@ -11,3 +11,4 @@ npm install
 ```
 npm start
 ```
+![alt text](./img1.png)
