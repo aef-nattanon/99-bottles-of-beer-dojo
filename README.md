@@ -11,4 +11,14 @@ npm install
 ```
 npm start
 ```
+
 ![alt text](./img1.png)
+
+## JavaScript Source Analysis
+```
+npm install -g plato
+plato -r -d report src
+open report/index.html # for zsh
+```
+
+![alt text](./img2.png)
