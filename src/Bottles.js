@@ -6,16 +6,22 @@ export default class Bottles {
     return downTo(hi, lo).map(n => this.verse(n)).join('\n')
   }
   verse(n) {
-    switch (n) {
-      case 0:
-        return `No more bottle of beer on the wall, no more bottle of beer. There's nothing else to fall, because there's no more bottle of beer on the wall.`
-      case 1:
-        return `one bottle of beer on the wall, one bottle of beer. Take one down, pass it around, No more bottle of beer on the wall.`
-      case 2:
-        return `2 bottles of beer on the wall, 2 bottles of beer. Take one down, pass it around, one bottle of beer on the wall.`
-      default:
-        return `${n} bottles of beer on the wall, ${n} bottles of beer. Take one down, pass it around, ${n - 1} bottles of beer on the wall.`
+    return `${this.quantity(n)} ${this.container(n)} of beer on the wall, ${n} ${this.container(n)} of beer. Take one down, pass ${this.pronoume(n)} around, ${this.container(n)} ${this.quantity(n - 1)} of beer on the wall.`
+  }
+  quantity(n) {
+    if (n == 0) {
+      return "no more"
+    } else if (n < 0) {
+      return 99
+    } else {
+      return n
     }
+  }
+  container(n) {
+    return n <= 1 ? 'bottle' : 'bottles'
+  }
+  pronoume(n) {
+    return n <= 1 ? 'one' : 'it'
   }
 }
 
