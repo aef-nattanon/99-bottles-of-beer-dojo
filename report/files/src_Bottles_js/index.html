@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">77.33</p>
+      <p class="stat">81.35</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">28</p>
+      <p class="stat">34</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">16.61</p>
+      <p class="stat">28.19</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.16</p>
+      <p class="stat">0.28</p>
     </div>
   </div>
 </div>
@@ -97,16 +97,22 @@
     return downTo(hi, lo).map(n =&gt; this.verse(n)).join(&#039;\n&#039;)
   }
   verse(n) {
-    switch (n) {
-      case 0:
-        return `No more bottle of beer on the wall, no more bottle of beer. There&#039;s nothing else to fall, because there&#039;s no more bottle of beer on the wall.`
-      case 1:
-        return `one bottle of beer on the wall, one bottle of beer. Take one down, pass it around, No more bottle of beer on the wall.`
-      case 2:
-        return `2 bottles of beer on the wall, 2 bottles of beer. Take one down, pass it around, one bottle of beer on the wall.`
-      default:
-        return `${n} bottles of beer on the wall, ${n} bottles of beer. Take one down, pass it around, ${n - 1} bottles of beer on the wall.`
+    return `${this.quantity(n)} ${this.container(n)} of beer on the wall, ${n} ${this.container(n)} of beer. Take one down, pass ${this.pronoume(n)} around, ${this.container(n)} ${this.quantity(n - 1)} of beer on the wall.`
+  }
+  quantity(n) {
+    if (n == 0) {
+      return &quot;no more&quot;
+    } else if (n &lt; 0) {
+      return 99
+    } else {
+      return n
     }
+  }
+  container(n) {
+    return n &lt;= 1 ? &#039;bottle&#039; : &#039;bottles&#039;
+  }
+  pronoume(n) {
+    return n &lt;= 1 ? &#039;one&#039; : &#039;it&#039;
   }
 }
 
